@@ -1,0 +1,52 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; //
+
+  @media (max-width: 1200px) {
+    font-size: 60%; // Adjust font size for large screens
+  }
+
+  @media (max-width: 992px) {
+    font-size: 50%; // Adjust font size for medium screens
+  }
+
+  @media (max-width: 768px) {
+    font-size: 45%; // Adjust font size for small screens
+  }
+
+  @media (max-width: 576px) {
+    font-size: 40%; // Adjust font size for extra small screens
+  }
+
+}
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative; 
+  z-index: 1; 
+  margin: 0; 
+  padding: 0;
+}
+
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+::selection {
+  background-color: rgba(45, 147, 198, 0.475);
+}

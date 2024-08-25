@@ -1,0 +1,32 @@
+.calc {
+	
+	&__functions {
+		button {
+			@include buttons($calc-function-button, $calc-function-button-on);
+		}
+	}
+
+	&__keys {
+		button {
+			@include buttons($calc-button, $calc-button-on);
+		}
+		.special {
+			@include buttons($calc-special-button, $calc-special-button-on);
+		}
+		.operation {
+			@include buttons($calc-operation-button, $calc-operation-button-on);
+		}
+		.important {
+			@include buttons($calc-important-button, $calc-important-button-on);
+		}
+	}
+
+	&__controls {
+		button {
+			@include buttons(#c69e1c, #ffffff);
+		}
+		.important {
+			@include buttons(#e43737, #ffffff);
+		}
+	}
+}

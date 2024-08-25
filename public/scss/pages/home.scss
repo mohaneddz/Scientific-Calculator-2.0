@@ -1,0 +1,67 @@
+.container {
+	background-color: #252525;
+	padding: 2rem;
+	border-radius: 2rem;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	width: min(60rem, 100%);
+	.display {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+		&__input {
+			padding: 1rem 2rem;
+			color: $display-color-on;
+			background-color: $display-color;
+			padding: 1rem 3rem;
+			width: 100%;
+			margin: 2rem 3rem;
+			border-radius: 1rem;
+			border: rgb(13, 34, 20) 2px solid;
+			font-size: 2.5rem;
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+
+	.calc {
+		display: grid;
+		&__functions,
+		&__keys {
+			@include griddy(6);
+			.hidden{
+				display: none;
+			}
+		}
+		&__controls {
+			@include griddy(7);
+			position: relative;
+			margin-bottom: 2rem;
+			// for the Shift Key :)
+			&::after {
+				content: '';
+				width: 100%;
+				height: 0.15rem;
+				position: absolute;
+				background-color: #c69e1c;
+				bottom: -0.5rem;
+			}
+			.active{
+				background-color: $font-color-primary;
+				color: $font-color-secondary;
+				&:hover, &:active{
+					background-color: $font-color-secondary;
+					color: $font-color-primary;
+				}
+	
+			}
+		}
+	}
+
+	.control {
+		background-color: $calc-controls-button;
+		color: $calc-controls-button-on;
+		grid-column: span 2;
+	}
+}

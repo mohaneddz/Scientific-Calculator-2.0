@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+::-moz-selection {
+  background-color: var(#c36464);
+}
+
+::selection {
+  background-color: var(#c36464);
+}
+
+body {
+  font-family: "Ubuntu Mono", monospace;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #000000;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+h1::after {
+  content: "";
+  display: block;
+  width: min(80%, 45rem);
+  height: 3px;
+  background-color: #000000;
+  margin: 1rem auto;
+}
+h1::before {
+  content: "";
+  display: block;
+  width: min(80%, 45rem);
+  height: 3px;
+  background-color: #000000;
+  margin: 1rem auto;
+}
+
+.calc__functions button {
+  background-color: #656060;
+  color: #dce310;
+  border-radius: 5px;
+  padding: 1.5rem 2rem;
+  border: none;
+  margin: 0.5rem 1rem;
+  width: max(-moz-max-content, 1fr);
+  width: max(max-content, 1fr);
+  box-shadow: 1px 1px 1px hsla(0, 100%, 98%, 0.272) inset, 1px 1px 15px hsl(0, 0%, 0%);
+  font-weight: 900;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.calc__functions button:hover {
+  background-color: #dce310;
+  color: #656060;
+}
+.calc__functions button:active {
+  transform: translateY(2px);
+}
+.calc__keys button {
+  background-color: #030303;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 1.5rem 2rem;
+  border: none;
+  margin: 0.5rem 1rem;
+  width: max(-moz-max-content, 1fr);
+  width: max(max-content, 1fr);
+  box-shadow: 1px 1px 1px hsla(0, 100%, 98%, 0.272) inset, 1px 1px 15px hsl(0, 0%, 0%);
+  font-weight: 900;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.calc__keys button:hover {
+  background-color: #ffffff;
+  color: #030303;
+}
+.calc__keys button:active {
+  transform: translateY(2px);
+}
+.calc__keys .special {
+  background-color: #c1ad17;
+  color: #960707;
+  border-radius: 5px;
+  padding: 1.5rem 2rem;
+  border: none;
+  margin: 0.5rem 1rem;
+  width: max(-moz-max-content, 1fr);
+  width: max(max-content, 1fr);
+  box-shadow: 1px 1px 1px hsla(0, 100%, 98%, 0.272) inset, 1px 1px 15px hsl(0, 0%, 0%);
+  font-weight: 900;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.calc__keys .special:hover {
+  background-color: #960707;
+  color: #c1ad17;
+}
+.calc__keys .special:active {
+  transform: translateY(2px);
+}
+.calc__keys .operation {
+  background-color: #a45f5f;
+  color: #f8f8f8;
+  border-radius: 5px;
+  padding: 1.5rem 2rem;
+  border: none;
+  margin: 0.5rem 1rem;
+  width: max(-moz-max-content, 1fr);
+  width: max(max-content, 1fr);
+  box-shadow: 1px 1px 1px hsla(0, 100%, 98%, 0.272) inset, 1px 1px 15px hsl(0, 0%, 0%);
+  font-weight: 900;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.calc__keys .operation:hover {
+  background-color: #f8f8f8;
+  color: #a45f5f;
+}
+.calc__keys .operation:active {
+  transform: translateY(2px);
+}
+.calc__keys .important {
+  background-color: #e43737;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 1.5rem 2rem;
+  border: none;
+  margin: 0.5rem 1rem;
+  width: max(-moz-max-content, 1fr);
+  width: max(max-content, 1fr);
+  box-shadow: 1px 1px 1px hsla(0, 100%, 98%, 0.272) inset, 1px 1px 15px hsl(0, 0%, 0%);
+  font-weight: 900;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.calc__keys .important:hover {
+  background-color: #ffffff;
+  color: #e43737;
+}
+.calc__keys .important:active {
+  transform: translateY(2px);
+}
+.calc__controls button {
+  background-color: #c69e1c;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 1.5rem 2rem;
+  border: none;
+  margin: 0.5rem 1rem;
+  width: max(-moz-max-content, 1fr);
+  width: max(max-content, 1fr);
+  box-shadow: 1px 1px 1px hsla(0, 100%, 98%, 0.272) inset, 1px 1px 15px hsl(0, 0%, 0%);
+  font-weight: 900;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.calc__controls button:hover {
+  background-color: #ffffff;
+  color: #c69e1c;
+}
+.calc__controls button:active {
+  transform: translateY(2px);
+}
+.calc__controls .important {
+  background-color: #e43737;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 1.5rem 2rem;
+  border: none;
+  margin: 0.5rem 1rem;
+  width: max(-moz-max-content, 1fr);
+  width: max(max-content, 1fr);
+  box-shadow: 1px 1px 1px hsla(0, 100%, 98%, 0.272) inset, 1px 1px 15px hsl(0, 0%, 0%);
+  font-weight: 900;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.calc__controls .important:hover {
+  background-color: #ffffff;
+  color: #e43737;
+}
+.calc__controls .important:active {
+  transform: translateY(2px);
+}
+
+.container {
+  background-color: #252525;
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: min(60rem, 100%);
+}
+.container .display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .display__input {
+  background-color: #3d6b2f;
+  padding: 1rem 3rem;
+  width: 100%;
+  margin: 2rem 3rem;
+  border-radius: 1rem;
+  border: black 2px solid;
+  font-size: 2rem;
+}
+.container .calc {
+  display: grid;
+}
+.container .calc__functions, .container .calc__keys {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.container .calc__controls {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  position: relative;
+  margin-bottom: 2rem;
+}
+.container .calc__controls::after {
+  content: "";
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  background-color: #656060;
+  bottom: -0.5rem;
+}
+.container .control {
+  background-color: #1cba7b;
+  color: #ffffff;
+  grid-column: span 2;
+}/*# sourceMappingURL=main.css.map */

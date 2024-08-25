@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="css/style.css" />
+		<script defer src="scripts/main.js" type="module"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="img/favicon.png" />
+		<title>Scientifc Calculator Online</title>
+	</head>
+	<body class="main">
+		<main>
+      <h1 class="title">
+        Scientific Calculator 2.0
+      </h1>
+	  <div class="container">
+		  <div class="display">
+			  <input type="text" class="display__input" value="0" readonly />
+			</div>
+		<div class="calc">
+		  <div class="calc__controls">
+			<button class="calc__controls--off important">OFF</button>
+			<button class="calc__controls--left control"><</button>
+			<button class="calc__controls--shift ">shift</button>
+			<button class="calc__controls--right control" >></button>
+			<button class="calc__controls--on important">ON</button>
+		  </div>
+		  <div class="calc__functions">
+			<!-- FIRST ROW -->
+			<button class="calc__functions--sroot">&#8730;</button>
+			<button class="calc__functions--a/b">A&#8260B</button>
+			<button class="calc__functions--power-">x<sup>-y</sub></button>
+			<button class="calc__functions--power">x<sup>y</sub></button>
+			<button class="calc__functions--power2">x<sup>2</sub></button>
+			<button class="calc__functions--log2">Log<sub>2</sub></button>
+			<!-- SECOND ROW -->
+			<button class="calc__functions--ln">ln</button>
+			<button class="calc__functions--exp">e^</button>
+			<button class="calc__functions--cos">cos</button>
+			<button class="calc__functions--acos hidden" >acos</button>
+			<button class="calc__functions--sin">sin</button>
+			<button class="calc__functions--asin hidden" >asin</button>
+			<button class="calc__functions--tan">tan</button>
+			<button class="calc__functions--atan hidden" >atan</button>
+			<button class="calc__functions--log">Log</button>
+			<!-- THIRD ROW -->
+			<button class="calc__functions--3root"><sup>3</sup>&#8730;</button>
+			<button class="calc__functions--factorial">x!</button>
+			<button class="calc__functions--mod">%</button>
+			<button class="calc__functions--abs">|a|</button>
+			<button class="calc__functions--lparent">(</button>
+			<button class="calc__functions--C hidden" >C</button>
+			<button class="calc__functions--rparent">)</button>
+			<button class="calc__functions--P hidden" >P</button>
+		</div>
+		<div class="calc__keys">
+			<!-- FIRST ROW -->
+			<button class="calc__keys--7">7</button>
+			<button class="calc__keys--8">8</button>
+			<button class="calc__keys--9">9</button>
+			<button class="calc__keys--del important">Del</button>
+			<button class="calc__keys--ans important">Ans</button>
+			<button class="calc__keys--sq2 special">&#8730;2</button>
+			<!-- SECOND ROW -->
+			<button class="calc__keys--4">4</button>
+			<button class="calc__keys--5">5</button>
+			<button class="calc__keys--6">6</button>
+			<button class="calc__keys--- operation">-</button>
+			<button class="calc__keys--+ operation">+</button>
+			<button class="calc__keys--e special">&#101;</button>
+			<!-- THIRD RO -->
+			<button class="calc__keys--1">1</button>
+			<button class="calc__keys--2">2</button>
+			<button class="calc__keys--3">3</button>
+			<button class="calc__keys--/ operation">&#8260</button>
+			<button class="calc__keys--x operation">&times;</button>
+			<button class="calc__keys--pie special">π</button>
+			<!-- FOURTH ROW -->
+			<button class="calc__keys--0">0</button>
+			<button class="calc__keys--.">.</button>
+			<button class="calc__keys--x10">&times;10<sup>y</sup></button>
+			<button class="calc__functions--clear control">Clear</button>
+			<button class="calc__keys--equal special" >=</button>
+		</div>
+	  </div>
+    </main>
+	</body>
+</html>

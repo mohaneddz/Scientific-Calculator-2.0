@@ -1,0 +1,32 @@
+@mixin griddy($num) {
+	display: grid;
+	grid-template-columns: repeat($num, 1fr);
+}
+
+@mixin buttons($primary, $secondary) {
+	background-color: $primary;
+	color: $secondary;
+
+	border-radius: 5px;
+	padding: 2rem 1.5rem;
+	border: none;
+	margin: 0.5rem 1rem;
+
+	width: min(max-content, 1fr);
+	// the color shadow have the primary but brighter color
+	box-shadow: 1px 1px 1px hsla(0, 100%, 98%, 0.272) inset, 1px 1px 15px hsl(0, 0%, 0%);
+	font-weight: 900;
+	font-size: 1.5rem;
+
+	transition: all 0.3s;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $secondary;
+		color: $primary;
+	}
+
+	&:active {
+		transform: translateY(2px);
+	}
+}
