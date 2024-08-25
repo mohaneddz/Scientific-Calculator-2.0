@@ -105,9 +105,9 @@ class Calculator {
 	infixToPostfix(expression) {
 		const output = [];
 		const stack = [];
-		expression = expression.replace(/π/g, this.constants['π']).replace(/e/g, this.constants['e']);
+		expression = expression.replace(/π/g, this.constants['π']).replace(/e(?!xp)/g, this.constants['e']);
 		const tokens = expression.match(
-			/(\d+\.?\d*|\^-|\.\d+|[+\-x/^√!%()]|x10\^|\^2|log_2|ln|exp|cos|sin|tan|log|3_√|[PC]|acos|asin|atan)/g
+			/(\d+\.?\d*|exp|\^-|\.\d+|[+\-x/^√!%()]|x10\^|\^2|log_2|ln|cos|sin|tan|log|3_√|[PC]|acos|asin|atan)/g
 		);
 
 		for (let token of tokens) {
@@ -462,6 +462,9 @@ class Calculator {
 	delete() {
 		if (!this.display.value) return;
 
+		// if the last character is not an operator with more than one character, delete the last character
+		// if(this.display
+
 		if (this.display.value.length <= 1) {
 			this.currentExpression = '';
 			this.updateDisplay('0');
@@ -481,6 +484,9 @@ class Calculator {
 	 * @returns {void}
 	 */
 	abs() {
+		if (!this.currentExpression)
+			this.currentExpression = Math.abs(parseFloat(this.previousValue)).toString();
+
 		this.currentExpression = Math.abs(parseFloat(this.currentExpression)).toString();
 		this.updateDisplay(this.currentExpression);
 	}

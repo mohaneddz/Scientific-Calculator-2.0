@@ -160,7 +160,167 @@ document.querySelector('.calc').addEventListener('click', (event) => {
 			break;
 		case btn.atan:
 			calculator.append('atan');
-		break;
+			break;
+		default:
+			break;
+	}
+});
+
+// Events for Keyboard Input :
+// Add event listener for keypresses
+document.addEventListener('keydown', (event) => {
+	switch (event.key) {
+		// Arithmetic Operations
+		case '+':
+			calculator.append('+');
+			break;
+		case '-':
+			calculator.append('-');
+			break;
+		case '*': // '*' represents multiplication
+			calculator.append('x');
+			break;
+		case '/':
+			calculator.append('/');
+			break;
+		case '%':
+			calculator.append('%');
+			break;
+
+		// Exponentiation and Special Operations
+		case '^':
+			calculator.append('^');
+			break;
+		case '²': // Superscript 2, typically Shift + 2
+			calculator.append('^2');
+			break;
+		case 'l': // 'l' could be used for logarithms ( any base )
+			if (calculator.shifted) {
+				calculator.append('log_2');
+			} else {
+				calculator.append('log');
+			}
+			break;
+		case 'n': // Assuming 'n' is used for natural logarithm
+			calculator.append('ln');
+			break;
+		case 'e':
+			calculator.append('e');
+			break;
+		case 'x': // x10^ (10 raised to the power)
+			calculator.append('x10^');
+			break;
+		case 'a': // x10^ (10 raised to the power)
+			calculator.ans();
+			break;
+		case 'A': // x10^ (10 raised to the power)
+			calculator.abs();
+			break;
+
+		// Trigonometric and Inverse Functions
+		case 'c':
+			if (calculator.shifted) calculator.append('acos');
+			else calculator.append('cos');
+
+			break;
+		case 's':
+			if (calculator.shifted) calculator.append('asin');
+			else calculator.append('sin');
+
+			break;
+		case 't':
+			if (calculator.shifted) calculator.append('atan');
+			else calculator.append('tan');
+			console.log(calculator.shifted);
+
+			break;
+
+		// Roots and Factorials
+		case 'r': // Square root
+			calculator.append('√');
+			break;
+		case '!':
+			calculator.append('!');
+			break;
+
+		// Combinations and Permutations
+		case 'P':
+			calculator.append('P');
+			break;
+		case 'C':
+			calculator.append('C');
+			break;
+
+		// Constants
+		case 'p': // PI
+			calculator.append('π');
+			break;
+
+		// Parentheses
+		case '(':
+			calculator.append('(');
+			break;
+		case ')':
+			calculator.append(')');
+			break;
+
+		// Numeric and Decimal Input
+		case '0':
+			calculator.append(0);
+			break;
+		case '1':
+			calculator.append(1);
+			break;
+		case '2':
+			calculator.append(2);
+			break;
+		case '3':
+			calculator.append(3);
+			break;
+		case '4':
+			calculator.append(4);
+			break;
+		case '5':
+			calculator.append(5);
+			break;
+		case '6':
+			calculator.append(6);
+			break;
+		case '7':
+			calculator.append(7);
+			break;
+		case '8':
+			calculator.append(8);
+			break;
+		case '9':
+			calculator.append(9);
+			break;
+		case '.':
+			calculator.append('.');
+			break;
+
+		// Special Keys
+		case 'Enter': // Equals
+			calculator.calculate();
+			break;
+		case 'Backspace': // Delete last character
+			calculator.delete();
+			break;
+		case 'Escape': // Clear
+			calculator.clear();
+			break;
+
+		// Additional
+		case 'Shift':
+			calculator.shift();
+			break;
+		case 'ArrowLeft': // Cursor left
+			calculator.left();
+			break;
+		case 'ArrowRight': // Cursor right
+			calculator.right();
+			break;
+
 		default:
 			break;
 	}
