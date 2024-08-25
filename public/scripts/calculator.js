@@ -1,5 +1,11 @@
 import * as btn from './btn.js';
 
+const btnsound = new Audio('../sounds/button.wav');
+const clcsound = new Audio('../sounds/calculate.wav');
+const errsound = new Audio('../sounds/error.wav');
+const shiftsound = new Audio('../sounds/switch.wav');
+const delsound = new Audio('../sounds/delete.wav');
+
 export const operations = [
 	'+',
 	'-',
@@ -297,6 +303,7 @@ class Calculator {
 			this.currentExpression.slice(this.cursorIndex);
 		this.cursorIndex += String(value).length;
 		this.updateDisplay(this.currentExpression);
+		btnsound.play();
 	}
 
 	/**
@@ -315,6 +322,8 @@ class Calculator {
 			this.previousValue = result;
 			this.currentExpression = '';
 			this.cursorIndex = 0;
+			clcsound.volume = 0.5;
+			clcsound.play();
 		} catch (error) {
 			this.handleError(error);
 		}
@@ -383,6 +392,7 @@ class Calculator {
 	 * @throws {Error} - If the calculator is not powered on
 	 */
 	handleError(err) {
+		errsound.play();
 		this.display.style.color = '#521d1d';
 		this.currentExpression = '';
 		this.updateDisplay('ERROR');
@@ -477,6 +487,7 @@ class Calculator {
 			this.currentExpression.slice(this.cursorIndex);
 		this.cursorIndex = Math.max(0, this.cursorIndex - 1);
 		this.updateDisplay(this.currentExpression || '0');
+		delsound.play();
 	}
 
 	/**
@@ -496,6 +507,7 @@ class Calculator {
 	 * @returns {void}
 	 */
 	shift() {
+		shiftsound.play();
 		this.shifted = !this.shifted;
 		btn.shift.classList.toggle('active');
 		// toggle hidden for sin, cos, tan and their inverses, and ( ) and C P
