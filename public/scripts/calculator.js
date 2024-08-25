@@ -52,6 +52,18 @@ export const precedenceMap = {
 	'!': 6,
 };
 
+/**
+ * Calculator class
+ * @class
+ * @classdesc A class representing a calculator
+ * @property {Object} constants - An object containing the constants π and e
+ * @property {HTMLInputElement} display - The display element
+ * @property {string} currentExpression - The current expression being evaluated
+ * @property {boolean} isPoweredOn - A boolean indicating if the calculator is powered on
+ * @property {number} cursorIndex - The index of the cursor in the display
+ * @property {number} previousValue - The previous value calculated
+ * @property {boolean} shifted - A boolean indicating if the shift key is pressed
+ */
 class Calculator {
 	constructor() {
 		this.constants = {
@@ -66,14 +78,30 @@ class Calculator {
 		this.shifted = false;
 	}
 
+	/**
+	 *	@param {string} token - The token to check
+	 *	@return {boolean} - A boolean indicating if the token is an operator
+	 *	@description Checks if the token is an operator
+	 */
 	isOperator(token) {
 		return operations.includes(token);
 	}
 
+	/**
+	 * @param {string} operator - The operator to check
+	 * @return {number} - The precedence of the operator
+	 * @description Returns the precedence of the operator
+	 */
 	precedence(operator) {
 		return precedenceMap[operator] || 0;
 	}
 
+	/**
+	 * @param {string} expression - The infix expression to convert to postfix
+	 * @return {Array} - The postfix expression
+	 * @description Converts an infix expression to a postfix expression
+	 * @throws {Error} - If there are mismatched parentheses, or if the input is invalid
+	 */
 	infixToPostfix(expression) {
 		const output = [];
 		const stack = [];
@@ -120,6 +148,12 @@ class Calculator {
 		return output;
 	}
 
+	/**
+	 * @param {Array} postfixExpression - The postfix expression to evaluate
+	 * @return {number} - The result of the postfix expression
+	 * @description Evaluates a postfix expression
+	 * @throws {Error} - If the input is invalid
+	 */
 	evaluatePostfix(postfixExpression) {
 		const stack = [];
 
@@ -141,6 +175,12 @@ class Calculator {
 		return stack[0];
 	}
 
+	/**
+	 * @param {string} operator - The operator to check
+	 * @return {boolean} - A boolean indicating if the operator is a unary operator
+	 * @description Checks if the operator is a unary operator
+	 * @throws {Error} - If the operator is unknown
+	 */
 	isUnaryOperator(operator) {
 		return [
 			'√',
@@ -160,6 +200,13 @@ class Calculator {
 		].includes(operator);
 	}
 
+	/**
+	 * @param {string} operator - The operator to apply
+	 * @param {number} value - The value to apply the operator to
+	 * @return {number} - The result of applying the operator to the value
+	 * @description Applies a unary operator to a value
+	 * @throws {Error} - If the operator is unknown
+	 */
 	applyUnaryOperation(operator, value) {
 		switch (operator) {
 			case '√':
@@ -195,6 +242,14 @@ class Calculator {
 		}
 	}
 
+	/**
+	 * @param {string} operator - The operator to apply
+	 * @param {number} a - The first operand
+	 * @param {number} b - The second operand
+	 * @return {number} - The result of applying the operator to the operands
+	 * @description Applies a binary operator to two operands
+	 * @throws {Error} - If the operator is unknown
+	 */
 	applyBinaryOperation(operator, a, b) {
 		try {
 			switch (operator) {
@@ -228,6 +283,12 @@ class Calculator {
 		}
 	}
 
+	/**
+	 * @param {string} value - The value to append to the current expression
+	 * @description Appends a value to the current expression
+	 * @throws {Error} - If the calculator is not powered on
+	 * @returns {void}
+	 */
 	append(value) {
 		if (!this.isPoweredOn) return;
 		this.currentExpression =
@@ -238,6 +299,12 @@ class Calculator {
 		this.updateDisplay(this.currentExpression);
 	}
 
+	/**
+	 * @param {string} operator - The operator to append to the current expression
+	 * @description Appends an operator to the current expression
+	 * @throws {Error} - If the calculator is not powered on
+	 * @returns {void}
+	 */
 	calculate() {
 		try {
 			if (!this.currentExpression) return;
@@ -253,32 +320,68 @@ class Calculator {
 		}
 	}
 
+	/**
+	 * @param {string} operator - The operator to append to the current expression
+	 * @description Appends an operator to the current expression
+	 * @throws {Error} - If the calculator is not powered on
+	 * @returns {void}
+	 */
 	clear() {
 		this.currentExpression = '';
 		this.updateDisplay('0');
 		this.cursorIndex = 0;
 	}
 
+	/**
+	 * @param {string} operator - The operator to append to the current expression
+	 * @description Appends an operator to the current expression
+	 * @throws {Error} - If the calculator is not powered on
+	 * @returns {void}
+	 */
 	factorial(num) {
 		if (num < 0) throw new Error('Invalid input for factorial');
 		if (num === 0) return 1;
 		return Array.from({ length: num }, (_, i) => i + 1).reduce((a, b) => a * b, 1);
 	}
 
+	/**
+	 * @param {string} operator - The operator to append to the current expression
+	 * @description Appends an operator to the current expression
+	 * @throws {Error} - If the calculator is not powered on
+	 * @returns {void}
+	 */
 	combination(n, r) {
 		return this.factorial(n) / (this.factorial(r) * this.factorial(n - r));
 	}
 
+	/**
+	 * @param {string} operator - The operator to append to the current expression
+	 * @description Appends an operator to the current expression
+	 * @throws {Error} - If the calculator is not powered on
+	 * @returns {void}
+	 */
 	permutation(n, r) {
 		return this.factorial(n) / this.factorial(n - r);
 	}
 
+	/**
+	 * @param {string} operator - The operator to append to the current expression
+	 * @description Appends an operator to the current expression
+	 * @throws {Error} - If the calculator is not powered on
+	 * @returns {void}
+	 */
 	updateDisplay(content) {
 		this.display.value = content;
 		this.display.setSelectionRange(this.cursorIndex, this.cursorIndex);
 		// set the color of the cursor to the same color as the text
 	}
 
+	/**
+	 * @param {Error} err - The error to handle
+	 * @description Handles an error
+	 * @returns {void}
+	 * @throws {Error} - If the calculator is not powered on
+	 */
 	handleError(err) {
 		this.display.style.color = '#521d1d';
 		this.currentExpression = '';
@@ -290,14 +393,30 @@ class Calculator {
 		console.error(err.message);
 	}
 
+	/**
+	 * @param {number} degrees - The degrees to convert to radians
+	 * @return {number} - The equivalent radians
+	 * @description Converts degrees to radians
+	 * @returns {number}
+	 */
 	degreesToRadians(degrees) {
 		return degrees * (Math.PI / 180);
 	}
 
+	/**
+	 * @param {number} radians - The radians to convert to degrees
+	 * @return {number} - The equivalent degrees
+	 * @description Converts radians to degrees
+	 * @returns {number}
+	 */
 	radiansToDegrees(radians) {
 		return radians * (180 / Math.PI);
 	}
 
+	/**
+	 * @description Turns off the calculator
+	 * @returns {void}
+	 */
 	powerOff() {
 		this.clear();
 		this.isPoweredOn = false;
@@ -305,6 +424,10 @@ class Calculator {
 		this.display.value = '';
 	}
 
+	/**
+	 * @description Turns on the calculator
+	 * @returns {void}
+	 */
 	powerOn() {
 		this.clear();
 		this.isPoweredOn = true;
@@ -312,18 +435,30 @@ class Calculator {
 		this.display.disabled = false;
 	}
 
+	/**
+	 * @description moves the cursor to the left
+	 * @returns {void}
+	 */
 	left() {
 		if (this.cursorIndex > 0) {
 			this.cursorIndex--;
 		}
 	}
 
+	/**
+	 * @description moves the cursor to the right
+	 * @returns {void}
+	 */
 	right() {
 		if (this.cursorIndex < this.currentExpression.length) {
 			this.cursorIndex++;
 		}
 	}
 
+	/**
+	 * @description deletes the character to the left of the cursor
+	 * @returns {void}
+	 */
 	delete() {
 		if (!this.display.value) return;
 
@@ -341,11 +476,19 @@ class Calculator {
 		this.updateDisplay(this.currentExpression || '0');
 	}
 
+	/**
+	 * @description deletes the character to the right of the cursor
+	 * @returns {void}
+	 */
 	abs() {
 		this.currentExpression = Math.abs(parseFloat(this.currentExpression)).toString();
 		this.updateDisplay(this.currentExpression);
 	}
 
+	/**
+	 * @description deletes the character to the right of the cursor
+	 * @returns {void}
+	 */
 	shift() {
 		this.shifted = !this.shifted;
 		btn.shift.classList.toggle('active');
@@ -367,6 +510,10 @@ class Calculator {
 		});
 	}
 
+	/**
+	 * @description deletes the character to the right of the cursor
+	 * @returns {void}
+	 */
 	ans() {
 		if (this.previousValue) {
 			this.append(this.previousValue.toString());
