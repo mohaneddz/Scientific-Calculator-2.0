@@ -12,6 +12,12 @@ body {
 	margin-bottom: 2rem;
 	-webkit-text-stroke: 3px $stroke-color;
 	text-shadow: 0 0 15px $font-color-secondary;
+	@media (max-width: 1200px) {
+		font-size: 6rem;
+	}
+	@media (max-width: 1000px) {
+		font-size: 5.5rem;
+	}
 	@media (max-width: 768px) {
 		font-size: 4.5rem;
 	}

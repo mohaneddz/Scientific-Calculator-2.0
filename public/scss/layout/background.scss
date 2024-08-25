@@ -1,13 +1,13 @@
-body {
-    background-image: radial-gradient(hsl(206, 72%, 79%), hsl(184, 78%, 33%));
-}
-
 main {
-    // set the image to be transparent 50%
-    width: 100vw;
-    height: 100vh;
-    background-image: url('../../img/back.png');
-    background-repeat: repeat;
-    background-size: 10%;
-    animation: background 170s linear infinite;
+	// set the image to be transparent 50%
+	width: 100vw;
+	height: 100vh;
+	background-image: url('../../img/back.png');
+	background-repeat: repeat;
+	background-size: 10%;
+	animation: background 170s linear infinite;
+    // anything not the container will be blurred
+}
+body {
+	background-image: radial-gradient(hsl(206, 72%, 79%), hsl(184, 78%, 33%));
 }

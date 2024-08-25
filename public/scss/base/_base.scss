@@ -7,22 +7,22 @@
 }
 
 html {
-  font-size: 62.5%; //
+  font-size: 76.5%; //
 
   @media (max-width: 1200px) {
-    font-size: 60%; // Adjust font size for large screens
+    font-size: 70%; // Adjust font size for large screens
   }
 
   @media (max-width: 992px) {
-    font-size: 50%; // Adjust font size for medium screens
+    font-size: 65%; // Adjust font size for medium screens
   }
 
   @media (max-width: 768px) {
-    font-size: 45%; // Adjust font size for small screens
+    font-size: 60%; // Adjust font size for small screens
   }
 
   @media (max-width: 576px) {
-    font-size: 40%; // Adjust font size for extra small screens
+    font-size: 50%; // Adjust font size for extra small screens
   }
 
 }

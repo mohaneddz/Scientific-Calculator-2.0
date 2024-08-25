@@ -12,6 +12,7 @@ export const operations = [
 	'√',
 	'^2',
 	'^',
+	'^-',
 	'log_2',
 	'ln',
 	'exp',
@@ -44,9 +45,9 @@ export const precedenceMap = {
 	sin: 5,
 	cos: 5,
 	tan: 5,
-	'asin': 5,
-	'acos': 5,
-	'atan': 5,
+	asin: 5,
+	acos: 5,
+	atan: 5,
 	exp: 5,
 	'!': 6,
 };
@@ -78,7 +79,7 @@ class Calculator {
 		const stack = [];
 		expression = expression.replace(/π/g, this.constants['π']).replace(/e/g, this.constants['e']);
 		const tokens = expression.match(
-			/(\d+\.?\d*|\.\d+|[+\-x/^√!%()]|x10\^|\^-|\^2|log_2|ln|exp|cos|sin|tan|log|3_√|[PC]|acos|asin|atan)/g
+			/(\d+\.?\d*|\^-|\.\d+|[+\-x/^√!%()]|x10\^|\^2|log_2|ln|exp|cos|sin|tan|log|3_√|[PC]|acos|asin|atan)/g
 		);
 
 		for (let token of tokens) {
@@ -172,17 +173,17 @@ class Calculator {
 			case 'exp':
 				return Math.exp(value);
 			case 'cos':
-				return Math.cos(this.degreesToRadians(value));
+				return Math.round(Math.cos(value), 3);
 			case 'sin':
-				return Math.sin(this.degreesToRadians(value));
+				return Math.round(Math.sin(value), 3);
 			case 'tan':
-				return Math.tan(this.degreesToRadians(value));
+				return Math.round(Math.tan(value), 3);
 			case 'acos':
-				return this.radiansToDegrees(Math.acos(value));
+				return Math.round(Math.acos(value), 3);
 			case 'asin':
-				return this.radiansToDegrees(Math.asin(value));
+				return Math.round(Math.asin(value), 3);
 			case 'atan':
-				return this.radiansToDegrees(Math.atan(value));
+				return Math.round(Math.atan(value), 3);
 			case 'log':
 				return Math.log10(value);
 			case '3_√':
@@ -229,9 +230,12 @@ class Calculator {
 
 	append(value) {
 		if (!this.isPoweredOn) return;
-		this.currentExpression += value;
-		this.updateDisplay(this.currentExpression);
+		this.currentExpression =
+			this.currentExpression.slice(0, this.cursorIndex) +
+			value +
+			this.currentExpression.slice(this.cursorIndex);
 		this.cursorIndex += String(value).length;
+		this.updateDisplay(this.currentExpression);
 	}
 
 	calculate() {
@@ -239,6 +243,7 @@ class Calculator {
 			if (!this.currentExpression) return;
 			const postfixExpression = this.infixToPostfix(this.currentExpression);
 			const result = this.evaluatePostfix(postfixExpression);
+			if (isNaN(result)) throw new Error('Invalid input');
 			this.updateDisplay(result.toString());
 			this.previousValue = result;
 			this.currentExpression = '';

@@ -1,5 +1,4 @@
 .calc {
-	
 	&__functions {
 		button {
 			@include buttons($calc-function-button, $calc-function-button-on);
@@ -15,6 +14,7 @@
 		}
 		.operation {
 			@include buttons($calc-operation-button, $calc-operation-button-on);
+			font-size: 3rem;
 		}
 		.important {
 			@include buttons($calc-important-button, $calc-important-button-on);
