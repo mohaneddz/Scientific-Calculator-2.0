@@ -1,4 +1,5 @@
 {
+    "name": "calculator",
     "version": "1.0.0",
     "scripts": {
         "watch:scss": "sass public/scss/main.scss public/css/style.css -w",
