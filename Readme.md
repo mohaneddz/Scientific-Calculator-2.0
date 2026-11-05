@@ -1,3 +1,5 @@
+![Scientific Calculator 2.0 cover](screenshots/cover.avif)
+
 # Scientific Calculator 2.0 🧮
 
 ## Introduction
